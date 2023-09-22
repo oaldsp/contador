@@ -56,4 +56,7 @@ set_global_assignment -name BDF_FILE contUP.bdf
 set_global_assignment -name VHDL_FILE conversor.vhd
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
 set_global_assignment -name BDF_FILE contUP2.bdf
+set_global_assignment -name BDF_FILE contDN.bdf
+set_global_assignment -name BDF_FILE atraso.bdf
+set_global_assignment -name BDF_FILE contDN2.bdf
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

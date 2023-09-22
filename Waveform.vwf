@@ -1,16 +1,16 @@
 /*<simulation_settings>
-<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off contador_e_registrador -c contador_e_registrador --vector_source="C:/Users/otavi/OneDrive/Desktop/Circuitos Digitais/contador_e_registrador/Waveform.vwf" --testbench_file="C:/Users/otavi/OneDrive/Desktop/Circuitos Digitais/contador_e_registrador/simulation/qsim/Waveform.vwf.vht"</ftestbench_cmd>
-<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off contador_e_registrador -c contador_e_registrador --vector_source="C:/Users/otavi/OneDrive/Desktop/Circuitos Digitais/contador_e_registrador/Waveform.vwf" --testbench_file="C:/Users/otavi/OneDrive/Desktop/Circuitos Digitais/contador_e_registrador/simulation/qsim/Waveform.vwf.vht"</ttestbench_cmd>
-<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/otavi/OneDrive/Desktop/Circuitos Digitais/contador_e_registrador/simulation/qsim/" contador_e_registrador -c contador_e_registrador</fnetlist_cmd>
-<tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=vhdl --output_directory="C:/Users/otavi/OneDrive/Desktop/Circuitos Digitais/contador_e_registrador/simulation/qsim/" contador_e_registrador -c contador_e_registrador</tnetlist_cmd>
+<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off contador_e_registrador -c contador_e_registrador --vector_source="C:/Users/otavi/OneDrive/Desktop/Circuitos Digitais/contador_e_registrador/Waveform.vwf" --testbench_file="C:/Users/otavi/OneDrive/Desktop/Circuitos Digitais/contador_e_registrador/simulation/qsim/Waveform.vwf.vt"</ftestbench_cmd>
+<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off contador_e_registrador -c contador_e_registrador --vector_source="C:/Users/otavi/OneDrive/Desktop/Circuitos Digitais/contador_e_registrador/Waveform.vwf" --testbench_file="C:/Users/otavi/OneDrive/Desktop/Circuitos Digitais/contador_e_registrador/simulation/qsim/Waveform.vwf.vt"</ttestbench_cmd>
+<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory="C:/Users/otavi/OneDrive/Desktop/Circuitos Digitais/contador_e_registrador/simulation/qsim/" contador_e_registrador -c contador_e_registrador</fnetlist_cmd>
+<tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="C:/Users/otavi/OneDrive/Desktop/Circuitos Digitais/contador_e_registrador/simulation/qsim/" contador_e_registrador -c contador_e_registrador</tnetlist_cmd>
 <modelsim_script>onerror {exit -code 1}
 vlib work
-vcom -work work contador_e_registrador.vho
-vcom -work work Waveform.vwf.vht
-vsim -novopt -c -t 1ps -L cyclonev -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.contador_e_registrador_vhd_vec_tst
+vlog -work work contador_e_registrador.vo
+vlog -work work Waveform.vwf.vt
+vsim -novopt -c -t 1ps -L cyclonev_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.contador_e_registrador_vlg_vec_tst
 vcd file -direction contador_e_registrador.msim.vcd
-vcd add -internal contador_e_registrador_vhd_vec_tst/*
-vcd add -internal contador_e_registrador_vhd_vec_tst/i1/*
+vcd add -internal contador_e_registrador_vlg_vec_tst/*
+vcd add -internal contador_e_registrador_vlg_vec_tst/i1/*
 proc simTimestamp {} {
     echo "Simulation time: $::now ps"
     if { [string equal running [runStatus]] } {
@@ -20,19 +20,16 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
-
-
-
 
 </modelsim_script>
 <modelsim_script_timing>onerror {exit -code 1}
 vlib work
-vcom -work work contador_e_registrador.vho
-vcom -work work Waveform.vwf.vht
-vsim -novopt -c -t 1ps -sdfmax contador_e_registrador_vhd_vec_tst/i1=contador_e_registrador_vhd.sdo -L cyclonev -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.contador_e_registrador_vhd_vec_tst
+vlog -work work contador_e_registrador.vo
+vlog -work work Waveform.vwf.vt
+vsim -novopt -c -t 1ps -L cyclonev_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.contador_e_registrador_vlg_vec_tst
 vcd file -direction contador_e_registrador.msim.vcd
-vcd add -internal contador_e_registrador_vhd_vec_tst/*
-vcd add -internal contador_e_registrador_vhd_vec_tst/i1/*
+vcd add -internal contador_e_registrador_vlg_vec_tst/*
+vcd add -internal contador_e_registrador_vlg_vec_tst/i1/*
 proc simTimestamp {} {
     echo "Simulation time: $::now ps"
     if { [string equal running [runStatus]] } {
@@ -43,11 +40,8 @@ after 2500 simTimestamp
 run -all
 quit -f
 
-
-
-
 </modelsim_script_timing>
-<hdl_lang>vhdl</hdl_lang>
+<hdl_lang>verilog</hdl_lang>
 </simulation_settings>*/
 /*
 WARNING: Do NOT edit the input and output ports in this file in a text
@@ -93,6 +87,46 @@ SIGNAL("frecEnt")
 	PARENT = "";
 }
 
+SIGNAL("c0")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("c1")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("c2")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("c3")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
 SIGNAL("t0")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
@@ -133,54 +167,14 @@ SIGNAL("t3")
 	PARENT = "";
 }
 
-SIGNAL("t10")
+GROUP("c")
 {
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "";
+	MEMBERS = "c3", "c2", "c1", "c0";
 }
 
-SIGNAL("t11")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "";
-}
-
-SIGNAL("t12")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "";
-}
-
-SIGNAL("t13")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "";
-}
-
-GROUP("t00")
+GROUP("t")
 {
 	MEMBERS = "t3", "t2", "t1", "t0";
-}
-
-GROUP("t111")
-{
-	MEMBERS = "t13", "t12", "t11", "t10";
 }
 
 TRANSITION_LIST("frecEnt")
@@ -194,6 +188,42 @@ TRANSITION_LIST("frecEnt")
 			LEVEL 0 FOR 5.0;
 			LEVEL 1 FOR 5.0;
 		}
+	}
+}
+
+TRANSITION_LIST("c0")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 1000.0;
+	}
+}
+
+TRANSITION_LIST("c1")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 1000.0;
+	}
+}
+
+TRANSITION_LIST("c2")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 1000.0;
+	}
+}
+
+TRANSITION_LIST("c3")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 1000.0;
 	}
 }
 
@@ -233,42 +263,6 @@ TRANSITION_LIST("t3")
 	}
 }
 
-TRANSITION_LIST("t10")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 1000.0;
-	}
-}
-
-TRANSITION_LIST("t11")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 1000.0;
-	}
-}
-
-TRANSITION_LIST("t12")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 1000.0;
-	}
-}
-
-TRANSITION_LIST("t13")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 1000.0;
-	}
-}
-
 DISPLAY_LINE
 {
 	CHANNEL = "frecEnt";
@@ -280,7 +274,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "t111";
+	CHANNEL = "c";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Hexadecimal;
 	TREE_INDEX = 1;
@@ -290,7 +284,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "t13";
+	CHANNEL = "c3";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Hexadecimal;
 	TREE_INDEX = 2;
@@ -300,7 +294,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "t12";
+	CHANNEL = "c2";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Hexadecimal;
 	TREE_INDEX = 3;
@@ -310,7 +304,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "t11";
+	CHANNEL = "c1";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Hexadecimal;
 	TREE_INDEX = 4;
@@ -320,7 +314,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "t10";
+	CHANNEL = "c0";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Hexadecimal;
 	TREE_INDEX = 5;
@@ -330,7 +324,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "t00";
+	CHANNEL = "t";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Hexadecimal;
 	TREE_INDEX = 6;
